@@ -17,7 +17,7 @@ Bu proje, **Autodesk Inventor API** kullanarak Inventor'ı başlatan, yeni bir p
 ### **2️⃣ Projeyi Çalıştırmadan Önce Yapılması Gerekenler**
 
 #### **📌 Autodesk Inventor COM Referanslarını Ekleyin**
-Autodesk Inventor API’si bir **COM bileşeni** olarak çalışır. **NuGet paketi yoktur**, manuel olarak eklemeniz gerekir:
+Autodesk Inventor API’si bir **COM bileşeni** olarak çalışır. **NuGet paketi yoktur**, eğer proje içinde ekli gözükmüyorsa manuel olarak eklemeniz gerekir:
 
 1. **Solution Explorer (Çözüm Gezgini)** → Projeye sağ tıklayın → **"Add" → "Reference..."** seçeneğini seçin.
 2. Açılan pencerede **"COM" sekmesine** gidin.
