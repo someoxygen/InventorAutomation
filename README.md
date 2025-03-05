@@ -37,7 +37,11 @@ Autodesk Inventor API’si bir **COM bileşeni** olarak çalışır. **NuGet pak
 #### **📌 Butonların İşlevleri**
 - **"Autodesk Inventor Başlat"** → Autodesk Inventor'ı başlatır.
 - **"Yeni Parça Oluştur"** → Inventor'da yeni bir parça (`.ipt` dosyası) oluşturur.
-- **"Sketch Ekle"** → Yeni bir 2D Sketch ekler ve şekil çizer.
+- **"Dikdörtgen Çiz"** → Yeni bir 2D Sketch ekler ve dikdörtgen çizer.
+- **"Üçgen Çiz"** → Yeni bir 2D Sketch ekler ve üçgen çizer.
+- **"Daire Çiz"** → Yeni bir 2D Sketch ekler ve daire çizer.
+- **"Beşgen Çiz"** → Yeni bir 2D Sketch ekler ve beşgen çizer.
+- **"Altıgen Çiz"** → Yeni bir 2D Sketch ekler ve altıgen çizer.
 - **"Kaydet ve Kapat"** → Dosyayı `C:\Temp\InventorPart_YYYYMMDD_HHMMSS.ipt` olarak kaydeder ve kapatır.
 
 
