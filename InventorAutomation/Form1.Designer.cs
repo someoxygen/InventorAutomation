@@ -3,11 +3,17 @@
     partial class Form1
     {
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.FlowLayoutPanel panelButtons;
         private System.Windows.Forms.Button btnStartInventor;
         private System.Windows.Forms.Button btnCreatePart;
-        private System.Windows.Forms.Button btnCreateSketch;
+        private System.Windows.Forms.Button btnRectangle;
+        private System.Windows.Forms.Button btnTriangle;
+        private System.Windows.Forms.Button btnCircle;
+        private System.Windows.Forms.Button btnPentagon;
+        private System.Windows.Forms.Button btnHexagon;
         private System.Windows.Forms.Button btnSaveAndClose;
-        private System.Windows.Forms.Label lblTitle;
 
         protected override void Dispose(bool disposing)
         {
@@ -21,64 +27,78 @@
         private void InitializeComponent()
         {
             this.Text = "Inventor Automation";
-            this.Size = new System.Drawing.Size(350, 350);
+            this.Size = new System.Drawing.Size(650, 850);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.BackColor = System.Drawing.Color.LightGray;
 
+            panelHeader = new System.Windows.Forms.Panel()
+            {
+                Dock = DockStyle.Top,
+                BackColor = System.Drawing.Color.DarkGray,
+                Padding = new Padding(0, 20, 0, 20),
+                AutoSize = true
+            };
+            this.Controls.Add(panelHeader);
+
             lblTitle = new System.Windows.Forms.Label()
             {
                 Text = "Autodesk Inventor Kontrol Paneli",
-                Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold),
-                AutoSize = true,
-                Location = new System.Drawing.Point(50, 20)
+                Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold),
+                AutoSize = false,
+                TextAlign = System.Drawing.ContentAlignment.MiddleCenter,
+                Dock = DockStyle.Top,
+                ForeColor = System.Drawing.Color.White
             };
-            this.Controls.Add(lblTitle);
+            panelHeader.Controls.Add(lblTitle);
 
-            btnStartInventor = new System.Windows.Forms.Button()
+            panelButtons = new System.Windows.Forms.FlowLayoutPanel()
             {
-                Text = "Autodesk Inventor Başlat",
-                Size = new System.Drawing.Size(250, 40),
-                Location = new System.Drawing.Point(50, 60),
-                BackColor = System.Drawing.Color.LightBlue,
-                Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold)
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.TopDown,
+                Padding = new Padding(50, 100, 50, 20),
+                BackColor = System.Drawing.Color.WhiteSmoke,
+                AutoSize = false,
+                WrapContents = false
             };
-            btnStartInventor.Click += new System.EventHandler(this.btnStartInventor_Click);
-            this.Controls.Add(btnStartInventor);
+            this.Controls.Add(panelButtons);
 
-            btnCreatePart = new System.Windows.Forms.Button()
-            {
-                Text = "Yeni Parça Oluştur",
-                Size = new System.Drawing.Size(250, 40),
-                Location = new System.Drawing.Point(50, 110),
-                BackColor = System.Drawing.Color.LightGreen,
-                Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold)
-            };
-            btnCreatePart.Click += new System.EventHandler(this.btnCreatePart_Click);
-            this.Controls.Add(btnCreatePart);
+            btnStartInventor = AddButton("Autodesk Inventor Başlat", System.Drawing.Color.LightBlue, btnStartInventor_Click);
+            btnCreatePart = AddButton("Yeni Parça Oluştur", System.Drawing.Color.LightGreen, btnCreatePart_Click);
+            btnRectangle = AddButton("Dikdörtgen Çiz", System.Drawing.Color.LightGoldenrodYellow, btnRectangle_Click);
+            btnTriangle = AddButton("Üçgen Çiz", System.Drawing.Color.LightGoldenrodYellow, btnTriangle_Click);
+            btnCircle = AddButton("Daire Çiz", System.Drawing.Color.LightGoldenrodYellow, btnCircle_Click);
+            btnPentagon = AddButton("Beşgen Çiz", System.Drawing.Color.LightGoldenrodYellow, btnPentagon_Click);
+            btnHexagon = AddButton("Altıgen Çiz", System.Drawing.Color.LightGoldenrodYellow, btnHexagon_Click);
+            btnSaveAndClose = AddButton("Kaydet ve Kapat", System.Drawing.Color.LightCoral, btnSaveAndClose_Click);
 
-            btnCreateSketch = new System.Windows.Forms.Button()
-            {
-                Text = "Sketch Ekle",
-                Size = new System.Drawing.Size(250, 40),
-                Location = new System.Drawing.Point(50, 160),
-                BackColor = System.Drawing.Color.LightGoldenrodYellow,
-                Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold)
-            };
-            btnCreateSketch.Click += new System.EventHandler(this.btnCreateSketch_Click);
-            this.Controls.Add(btnCreateSketch);
+            SetInitialButtonStates();
+        }
 
-            btnSaveAndClose = new System.Windows.Forms.Button()
+        private Button AddButton(string text, System.Drawing.Color color, EventHandler clickEvent)
+        {
+            Button btn = new Button()
             {
-                Text = "Kaydet ve Kapat",
-                Size = new System.Drawing.Size(250, 40),
-                Location = new System.Drawing.Point(50, 210),
-                BackColor = System.Drawing.Color.LightCoral,
-                Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold)
+                Text = text,
+                AutoSize = false,
+                Size = new System.Drawing.Size(500, 60),
+                BackColor = color,
+                Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold),
+                Margin = new Padding(10),
+                FlatStyle = FlatStyle.Flat,
+                Enabled = false 
             };
-            btnSaveAndClose.Click += new System.EventHandler(this.btnSaveAndClose_Click);
-            this.Controls.Add(btnSaveAndClose);
+
+            btn.FlatAppearance.BorderSize = 0;
+            btn.Click += clickEvent;
+            panelButtons.Controls.Add(btn);
+            return btn;
+        }
+
+        private void SetInitialButtonStates()
+        {
+            btnStartInventor.Enabled = true;
         }
     }
 }
