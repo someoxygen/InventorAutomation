@@ -14,7 +14,11 @@
         private System.Windows.Forms.Button btnPentagon;
         private System.Windows.Forms.Button btnHexagon;
         private System.Windows.Forms.Button btnSaveAndClose;
-
+        private System.Windows.Forms.Button btnAssembleParts;
+        private System.Windows.Forms.Button btnAssembleWindowParts;
+        private System.Windows.Forms.Button btnCreateWindowBig;
+        private System.Windows.Forms.Button btnCreateWindowSmall;
+        private System.Windows.Forms.Button btnCreateAllParts;
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -27,7 +31,7 @@
         private void InitializeComponent()
         {
             this.Text = "Inventor Automation";
-            this.Size = new System.Drawing.Size(650, 850);
+            this.Size = new System.Drawing.Size(650, 1000);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -56,11 +60,11 @@
             panelButtons = new System.Windows.Forms.FlowLayoutPanel()
             {
                 Dock = DockStyle.Fill,
-                FlowDirection = FlowDirection.TopDown,
-                Padding = new Padding(50, 100, 50, 20),
+                FlowDirection = FlowDirection.LeftToRight,
+                Padding = new Padding(30, 100, 30, 20),
                 BackColor = System.Drawing.Color.WhiteSmoke,
-                AutoSize = false,
-                WrapContents = false
+                AutoScroll = true,
+                WrapContents = true
             };
             this.Controls.Add(panelButtons);
 
@@ -71,6 +75,11 @@
             btnCircle = AddButton("Daire Çiz", System.Drawing.Color.LightGoldenrodYellow, btnCircle_Click);
             btnPentagon = AddButton("Beşgen Çiz", System.Drawing.Color.LightGoldenrodYellow, btnPentagon_Click);
             btnHexagon = AddButton("Altıgen Çiz", System.Drawing.Color.LightGoldenrodYellow, btnHexagon_Click);
+            btnAssembleParts = AddButton("Parçaları Montajla", System.Drawing.Color.LightSkyBlue, btnAssembleParts_Click);
+            btnAssembleWindowParts = AddButton("Pencere Montajla", System.Drawing.Color.LightSkyBlue, btnAssembleWindow_Click);
+            btnCreateWindowBig = AddButton("Profille Büyük Pencere Montajla", System.Drawing.Color.LightSkyBlue, btnCreateBigWindow_Click);
+            btnCreateWindowSmall = AddButton("Profille Küçük Pencere Montajla", System.Drawing.Color.LightSkyBlue, btnCreateSmallWindow_Click);
+            btnCreateAllParts = AddButton("Bütün Parçaları Montajla", System.Drawing.Color.LightSkyBlue, btnCreateAllParts_Click);
             btnSaveAndClose = AddButton("Kaydet ve Kapat", System.Drawing.Color.LightCoral, btnSaveAndClose_Click);
 
             SetInitialButtonStates();
@@ -82,12 +91,12 @@
             {
                 Text = text,
                 AutoSize = false,
-                Size = new System.Drawing.Size(500, 60),
+                Size = new System.Drawing.Size(240, 60), // iki sütuna uygun
                 BackColor = color,
-                Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold),
+                Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold),
                 Margin = new Padding(10),
                 FlatStyle = FlatStyle.Flat,
-                Enabled = false 
+                Enabled = false
             };
 
             btn.FlatAppearance.BorderSize = 0;
